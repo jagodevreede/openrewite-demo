@@ -23,7 +23,11 @@ This application is the initial **Wreckage 1.x** baseline. The `wreckage` librar
 ## Build
 
 ```bash
-cd survivor-app
-mvn clean test
-mvn clean package
+./build.sh
+```
+
+To start the application in dev mode:
+
+```bash
+./build.sh start
 ```

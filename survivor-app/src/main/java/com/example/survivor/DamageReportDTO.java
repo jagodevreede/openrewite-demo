@@ -1,3 +1,3 @@
 package com.example.survivor;
 
-public record DamageReportDTO(int damageLevel, boolean recoverable) {}
+public record DamageReportDTO(String id, int damageLevel, boolean recoverable) {}

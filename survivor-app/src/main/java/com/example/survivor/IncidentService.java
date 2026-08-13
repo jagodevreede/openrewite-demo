@@ -1,11 +1,10 @@
 package com.example.survivor;
 
-import com.wreckage.Wreck;
-import com.wreckage.WreckageClient;
-import com.wreckage.RecoveryService;
 import com.wreckage.DamageReport;
 import com.wreckage.NotificationService;
-
+import com.wreckage.RecoveryService;
+import com.wreckage.Wreck;
+import com.wreckage.WreckageClient;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
@@ -34,7 +33,7 @@ public class IncidentService {
         if (wreck == null) {
             return null;
         }
-        return new DamageReportDTO(wreck.assessDamage().getDamageLevel(), wreck.assessDamage().isRecoverable());
+        return new DamageReportDTO(id, wreck.assessDamage().getDamageLevel(), wreck.assessDamage().isRecoverable());
     }
 
     public IncidentReportDTO recoverIncident(String id) {
