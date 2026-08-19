@@ -39,6 +39,16 @@ public class SurvivorResource {
         return Response.ok(dto).build();
     }
 
+    @GET
+    @Path("/{id}/assessment")
+    public Response assessIncident(@PathParam("id") String id) {
+        String assessment = incidentService.assessIncident(id);
+        if (assessment == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(assessment).build();
+    }
+
     @POST
     @Path("/{id}/recover")
     public Response recoverIncident(@PathParam("id") String id) {

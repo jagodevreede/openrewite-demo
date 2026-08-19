@@ -1,3 +1,5 @@
 package com.example.survivor;
 
-public record DamageReportDTO(String id, int damageLevel, boolean recoverable) {}
+import com.wreckage.Severity;
+
+public record DamageReportDTO(String id, int damageLevel, boolean recoverable, Severity severity) {}

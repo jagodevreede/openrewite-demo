@@ -31,3 +31,9 @@ To start the application in dev mode:
 ```bash
 ./build.sh start
 ```
+
+## demo commands
+
+in app:
+`mvn org.openrewrite.maven:rewrite-maven-plugin:6.46.1:run --define rewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-migrate-java:RELEASE --define rewrite.activeRecipes=org.openrewrite.java.migrate.lang.StringFormatted`
+`mvn org.openrewrite.maven:rewrite-maven-plugin:6.46.1:run --define rewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-migrate-java:RELEASE --define rewrite.activeRecipes=org.openrewrite.java.migrate.UpgradeToJava25`

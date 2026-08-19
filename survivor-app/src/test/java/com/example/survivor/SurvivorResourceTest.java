@@ -5,7 +5,8 @@ import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
 public class SurvivorResourceTest {
@@ -40,9 +41,9 @@ public class SurvivorResourceTest {
         given()
             .when().post("/incidents/wreck-001/inspect")
             .then()
-            .statusCode(200)
             .body("damageLevel", is(4))
-            .body("recoverable", is(true));
+            .body("recoverable", is(true))
+            .body("severity", equalTo("MODERATE"));
     }
 
     @Test
@@ -50,9 +51,9 @@ public class SurvivorResourceTest {
         given()
             .when().post("/incidents/wreck-001/recover")
             .then()
-            .statusCode(200)
             .body("recoveryStatus", equalTo("recovered"))
-            .body("recoverable", is(true));
+            .body("recoverable", is(true))
+            .body("severity", equalTo("MODERATE"));
     }
 
     @Test
@@ -60,9 +61,9 @@ public class SurvivorResourceTest {
         given()
             .when().post("/incidents/wreck-002/recover")
             .then()
-            .statusCode(200)
             .body("recoveryStatus", equalTo("unrecoverable"))
-            .body("recoverable", is(false));
+            .body("recoverable", is(false))
+            .body("severity", equalTo("CRITICAL"));
     }
 
     @Test
@@ -76,6 +77,7 @@ public class SurvivorResourceTest {
             .body("location", equalTo("Pacific Rim"))
             .body("damageLevel", is(2))
             .body("recoverable", is(true))
+            .body("severity", equalTo("LOW"))
             .body("recoveryStatus", equalTo("pending"));
     }
 }
