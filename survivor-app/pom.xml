@@ -67,11 +67,22 @@
                     <groupId>org.openrewrite.maven</groupId>
                     <artifactId>rewrite-maven-plugin</artifactId>
                     <version>6.46.1</version>
-                    <configuration>
-                        <activeRecipes>
-                            <recipe>org.openrewrite.java.migrate.UpgradeToJava25</recipe>
-                        </activeRecipes>
-                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>code-style</id>
+                            <configuration>
+                                <activeRecipes>
+                                    <recipe>org.openrewrite.java.migrate.UpgradeToJava25</recipe>
+                                    <recipe>org.openrewrite.java.RemoveUnusedImports</recipe>
+                                    <recipe>org.openrewrite.java.migrate.lang.var.UseVarForTypeCast</recipe>
+                                    <recipe>org.openrewrite.java.migrate.lang.var.UseVarForConstructors</recipe>
+                                    <recipe>org.openrewrite.java.migrate.lang.var.UseVarForGenericsConstructors</recipe>
+                                    <recipe>org.openrewrite.java.migrate.lang.var.UseVarForGenericMethodInvocations</recipe>
+                                    <recipe>org.openrewrite.java.migrate.lang.var.UseVarForPrimitive</recipe>
+                                </activeRecipes>
+                            </configuration>
+                        </execution>
+                    </executions>
                     <dependencies>
                         <dependency>
                             <groupId>org.openrewrite.recipe</groupId>
