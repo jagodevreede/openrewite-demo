@@ -2,7 +2,7 @@ package com.example.survivor;
 
 import com.wreckage.DamageAnalyzer;
 import com.wreckage.IncidentLog;
-import com.wreckage.NotificationCervice;
+import com.wreckage.NotificationService;
 import com.wreckage.RecoveryService;
 import com.wreckage.Severity;
 import com.wreckage.Wreck;
@@ -21,7 +21,7 @@ class ServiceTest {
         when(client.findWreck("missing")).thenReturn(null);
 
         IncidentService service = new IncidentService(client, mock(RecoveryService.class),
-                mock(NotificationCervice.class), new DamageAnalyzer(), new IncidentLog());
+                mock(NotificationService.class), new DamageAnalyzer(), new IncidentLog());
 
         assertNull(service.findIncident("missing"));
     }

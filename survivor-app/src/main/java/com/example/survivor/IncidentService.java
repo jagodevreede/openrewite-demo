@@ -2,7 +2,7 @@ package com.example.survivor;
 
 import com.wreckage.DamageAnalyzer;
 import com.wreckage.IncidentLog;
-import com.wreckage.NotificationCervice;
+import com.wreckage.NotificationService;
 import com.wreckage.RecoveryService;
 import com.wreckage.Severity;
 import com.wreckage.Wreck;
@@ -18,16 +18,16 @@ public class IncidentService {
 
     private final WreckageClient wreckageClient;
     private final RecoveryService recoveryService;
-    private final NotificationCervice notificationCervice;
+    private final NotificationService notificationCervice;
     private final DamageAnalyzer damageAnalyzer;
     private final IncidentLog incidentLog;
 
     public IncidentService() {
-        this(new WreckageClient(), new RecoveryService(), new NotificationCervice(), new DamageAnalyzer(), new IncidentLog());
+        this(new WreckageClient(), new RecoveryService(), new NotificationService(), new DamageAnalyzer(), new IncidentLog());
     }
 
     IncidentService(WreckageClient wreckageClient, RecoveryService recoveryService,
-                    NotificationCervice notificationCervice, DamageAnalyzer damageAnalyzer,
+                    NotificationService notificationCervice, DamageAnalyzer damageAnalyzer,
                     IncidentLog incidentLog) {
         this.wreckageClient = wreckageClient;
         this.recoveryService = recoveryService;
