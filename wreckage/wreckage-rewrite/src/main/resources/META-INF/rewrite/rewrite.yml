@@ -1,8 +1,10 @@
 type: specs.openrewrite.org/v1beta/recipe
-name: com.example.wreckage.RenameNotificationCervice
+name: com.example.wreckage.UpdateToLatest
 displayName: Rename NotificationCervice typo
 description: Rename the misspelled NotificationCervice class to NotificationService.
 recipeList:
-  - org.openrewrite.java.ChangeType:
-      oldFullyQualifiedTypeName: com.wreckage.NotificationCervice
-      newFullyQualifiedTypeName: com.wreckage.NotificationService
+  - com.example.wreckage.v1tov2
+  - org.openrewrite.maven.UpgradeDependencyVersion:
+      groupId: com.example
+      artifactId: wreckage
+      newVersion: ${parent.version}

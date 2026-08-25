@@ -82,12 +82,25 @@
                                 </activeRecipes>
                             </configuration>
                         </execution>
+                        <execution>
+                            <id>upgrade</id>
+                            <configuration>
+                                <activeRecipes>
+                                    <recipe>com.example.wreckage.UpdateToLatest</recipe>
+                                </activeRecipes>
+                            </configuration>
+                        </execution>
                     </executions>
                     <dependencies>
                         <dependency>
                             <groupId>org.openrewrite.recipe</groupId>
                             <artifactId>rewrite-migrate-java</artifactId>
                             <version>3.42.1</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.example</groupId>
+                            <artifactId>wreckage-rewrite</artifactId>
+                            <version>2.0.0</version>
                         </dependency>
                     </dependencies>
                 </plugin>

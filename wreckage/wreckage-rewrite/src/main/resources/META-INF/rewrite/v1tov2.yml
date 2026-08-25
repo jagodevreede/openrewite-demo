@@ -1,0 +1,8 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: com.example.wreckage.v1tov2
+displayName: Rename NotificationCervice typo
+description: Rename the misspelled NotificationCervice class to NotificationService.
+recipeList:
+  - org.openrewrite.java.ChangeType:
+      oldFullyQualifiedTypeName: com.wreckage.NotificationCervice
+      newFullyQualifiedTypeName: com.wreckage.NotificationService
