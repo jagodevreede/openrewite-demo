@@ -18,7 +18,7 @@ public class IncidentService {
 
     private final WreckageClient wreckageClient;
     private final RecoveryService recoveryService;
-    private final NotificationService notificationCervice;
+    private final NotificationService notificationService;
     private final DamageAnalyzer damageAnalyzer;
     private final IncidentLog incidentLog;
 
@@ -27,11 +27,11 @@ public class IncidentService {
     }
 
     IncidentService(WreckageClient wreckageClient, RecoveryService recoveryService,
-                    NotificationService notificationCervice, DamageAnalyzer damageAnalyzer,
+                    NotificationService notificationService, DamageAnalyzer damageAnalyzer,
                     IncidentLog incidentLog) {
         this.wreckageClient = wreckageClient;
         this.recoveryService = recoveryService;
-        this.notificationCervice = notificationCervice;
+        this.notificationService = notificationService;
         this.damageAnalyzer = damageAnalyzer;
         this.incidentLog = incidentLog;
     }
@@ -68,7 +68,7 @@ public class IncidentService {
             case MODERATE, LOW -> {
                 try {
                     recoveryService.recover(wreck);
-                    notificationCervice.notifySurvivors(wreck);
+                    notificationService.notifySurvivors(wreck);
                     yield "recovered";
                 } catch (IllegalArgumentException e) {
                     yield "unrecoverable";
