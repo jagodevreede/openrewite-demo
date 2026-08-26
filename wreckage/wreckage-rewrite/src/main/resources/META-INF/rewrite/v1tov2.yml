@@ -6,3 +6,4 @@ recipeList:
   - org.openrewrite.java.ChangeType:
       oldFullyQualifiedTypeName: com.wreckage.NotificationCervice
       newFullyQualifiedTypeName: com.wreckage.NotificationService
+  - com.wreckage.rewrite.RenameServiceVariable
