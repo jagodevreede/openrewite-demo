@@ -32,3 +32,29 @@ fi
 echo "Checking out STEP $next_step..."
 git reset --hard "$next_commit"
 git clean -xdf ./src
+
+show_step_image() {
+  # Image playback is intentionally macOS-only; Linux and other hosts continue normally.
+  if [[ "$(uname -s)" != "Darwin" ]]; then
+    return 0
+  fi
+
+  local image="$(cd "$(dirname "$0")" && pwd)/STEP ${next_step}.png"
+  if [[ ! -f "$image" ]]; then
+    return 0
+  fi
+
+  if ! command -v open >/dev/null 2>&1 || ! command -v osascript >/dev/null 2>&1; then
+    return 0
+  fi
+
+  local seconds="${STEP_IMAGE_SECONDS:-5}"
+  open -a Preview "$image"
+  sleep 1
+  if osascript -e 'tell application "System Events" to keystroke "f" using {control down, command down}'; then
+    sleep "$seconds"
+    osascript -e 'tell application "Preview" to quit'
+  fi
+}
+
+show_step_image
